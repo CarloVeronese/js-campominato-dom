@@ -15,6 +15,7 @@ playDOMElement.addEventListener('click',function(){
     const scoreBoardDOMElement = document.querySelector('.score-board')
     scoreBoardDOMElement.classList.add('display')
     const scoreDOMElement = document.getElementById('score')
+    scoreDOMElement.innerHTML = score
     let endGame = false
     for(let i = 0; i < cellsArray.length; i++){
         const currentCell = cellsArray[i]
@@ -24,15 +25,14 @@ playDOMElement.addEventListener('click',function(){
                     if(minesArray.includes((i + 1))){
                         clickMine(currentCell, i)
                         showMines(cellsArray, minesArray)
-                        endGame = true
+                        endGame = gameOver(false, scoreDOMElement)
                     }
                     else{ 
                         score ++
                         scoreDOMElement.innerHTML = score
                         clickCell(currentCell, i)
-                        console.log('Current score: ' + score)
                         if(score == scoreToWin){
-                            endGame = true
+                            endGame = gameOver(true, scoreDOMElement)
                         }
                     }
                 }
@@ -82,13 +82,11 @@ function generateArrayRandomNumbers(min, max, dim){
     return numbersArray
 }
 
-// function gameOver(result, scoreBoardDOMElement){
-//     if(result){
-//         scoreBoardDOMElement.innerHTML += `<h2>You WIN<h2/>`
-//     }
-//     else scoreBoardDOMElement.innerHTML += `<h2>You LOSE<h2/>`
-
-// }
+function gameOver(result, scoreDOMElement){
+    if(result) scoreDOMElement.innerHTML += `<div class="win">YOU WIN</div>`
+    else scoreDOMElement.innerHTML += `<span class="lose"> YOU LOSE</span>`
+    return true
+}
 
 function showMines(cellsArray, minesArray){
     for(let i = 0; i < minesArray.length; i++){

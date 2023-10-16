@@ -52,7 +52,8 @@
 
 .score-board{
     display: none;
-    font-size: 20px
+    font-size: 20px;
+    flex-grow: 1;
 }
 
 .display{
@@ -61,7 +62,6 @@
 
 .d-flex{
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
 }
 
@@ -85,4 +85,21 @@
 .col-12{
     flex-basis: 100%;
     text-align: center;
+}
+
+.lose{
+    color: tomato;
+}
+
+.win{
+    color: aquamarine;
+}
+
+.header-flex{
+    gap: 20px;
+}
+
+#score{
+    flex-grow: 1;
+    justify-content: space-between;
 }
