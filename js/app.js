@@ -8,20 +8,26 @@ playDOMElement.addEventListener('click',function(){
     const cellsNumber = chooseLevel(difficultyLevel) 
     createGrid(cellsNumber)
     const cellsArray = document.querySelectorAll('.cell')
-    const minesArray = (generateArrayRandomNumbers(1, cellsNumber, 16))
+    const minesArray = (generateArrayRandomNumbers(1, cellsNumber, 5))
     console.log(minesArray)
     let score = 0
-    const scoreToWin = cellsNumber - 16
+    const scoreToWin = cellsNumber - 5
     for(let i = 0; i < cellsArray.length; i++){
         const currentCell = cellsArray[i]
         currentCell.addEventListener('click', function(){
             if(!currentCell.classList.contains('cell-clicked')){
                 if(minesArray.includes((i + 1))){
                     clickMine(currentCell, i)
+                    gameOver(false)
                 }
-                else clickCell(currentCell, i)
+                else{ 
+                    score ++
+                    clickCell(currentCell, i)
+                    console.log('Current score: ' + score)
+                    if(score == scoreToWin) gameOver(true)
+                }
             }
-        })        
+        }) 
     }
 })
 
@@ -36,8 +42,7 @@ function clickCell(currentCell, cellPosition){
     currentCell.classList.add('cell-clicked')
 }
 
-function clickMine(currentCell, cellPosition){
-    console.log('You looooose')
+function clickMine(currentCell){
     currentCell.classList.add('mine-clicked')
 }
 
@@ -65,4 +70,9 @@ function generateArrayRandomNumbers(min, max, dim){
         }
     }while(numbersArray.length < dim)
     return numbersArray
+}
+
+function gameOver(result){
+    if(result) console.log('you win!')
+    else console.log('you lose!')
 }
