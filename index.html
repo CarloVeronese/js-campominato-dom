@@ -9,14 +9,16 @@
 <body>
     <header class="section">
         <div class="container">
-            <span>MINESWEEPER</span>
-            <button class="play-btn">PLAY</button>
-            <select name="difficulty-level" id="difficulty-level">
-                <option value="1">Difficulty 1</option>
-                <option value="2">Difficulty 2</option>
-                <option value="3">Difficulty 3</option>
-            </select>
-            <h2 class="score-board">Score: <span id="score">0</span></h2>
+            <div class="d-flex">
+                <h1 class="col-12">MINESWEEPER</h1>
+                <select name="difficulty-level" id="difficulty-level">
+                    <option value="1">Easy</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Legend</option>
+                </select>
+                <button class="play-btn">PLAY</button>
+                <h2 class="score-board">Score: <span id="score">0</span></h2>
+            </div>
         </div>
     </header>
     <main class="section">

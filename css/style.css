@@ -52,8 +52,37 @@
 
 .score-board{
     display: none;
+    font-size: 20px
 }
 
 .display{
     display: inline-block;
+}
+
+.d-flex{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.play-btn{
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 20px;
+    border-radius: 999px;
+    background-color: aquamarine;
+}
+
+#difficulty-level{
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 20px;
+    border-radius: 999px;
+    color: tomato;
+    font-weight: 600;
+}
+
+.col-12{
+    flex-basis: 100%;
+    text-align: center;
 }
