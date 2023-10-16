@@ -12,6 +12,9 @@ playDOMElement.addEventListener('click',function(){
     console.log(minesArray)
     let score = 0
     const scoreToWin = cellsNumber - 16
+    const scoreBoardDOMElement = document.querySelector('.score-board')
+    scoreBoardDOMElement.classList.add('display')
+    const scoreDOMElement = document.getElementById('score')
     for(let i = 0; i < cellsArray.length; i++){
         const currentCell = cellsArray[i]
         currentCell.addEventListener('click', function(){
@@ -23,6 +26,7 @@ playDOMElement.addEventListener('click',function(){
                 }
                 else{ 
                     score ++
+                    scoreDOMElement.innerHTML = score
                     clickCell(currentCell, i)
                     console.log('Current score: ' + score)
                     if(score == scoreToWin) gameOver(true)
@@ -81,8 +85,8 @@ function gameOver(result){
 function showMines(cellsArray, minesArray){
     for(let i = 0; i < minesArray.length; i++){
         currentMinePosition = minesArray[i]
-        if(!cellsArray[currentMinePosition].classList.contains('mine-clicked')){
-            cellsArray[currentMinePosition].classList.add('mine-clicked')
+        if(!cellsArray[currentMinePosition - 1].classList.contains('mine-clicked')){
+            cellsArray[currentMinePosition - 1].classList.add('mine-clicked')
         }
     }
 }

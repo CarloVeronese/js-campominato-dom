@@ -49,3 +49,11 @@
     background-color: tomato;
     cursor: auto;
 }
+
+.score-board{
+    display: none;
+}
+
+.display{
+    display: inline-block;
+}
