@@ -23,14 +23,14 @@ playDOMElement.addEventListener('click',function(){
             if(!endGame){
                 if(!currentCell.classList.contains('cell-clicked')){
                     if(minesArray.includes((i + 1))){
-                        clickMine(currentCell, i)
+                        clickMine(currentCell)
                         showMines(cellsArray, minesArray)
                         endGame = gameOver(false, scoreDOMElement)
                     }
                     else{ 
                         score ++
                         scoreDOMElement.innerHTML = score
-                        clickCell(currentCell, i)
+                        clickCell(currentCell)
                         if(score == scoreToWin){
                             endGame = gameOver(true, scoreDOMElement)
                         }
@@ -48,7 +48,6 @@ function chooseLevel(num){
 }
 
 function clickCell(currentCell, cellPosition){
-    console.log('You clicked the cell number: ' + (cellPosition + 1))
     currentCell.classList.add('cell-clicked')
 }
 
