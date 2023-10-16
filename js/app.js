@@ -15,21 +15,26 @@ playDOMElement.addEventListener('click',function(){
     const scoreBoardDOMElement = document.querySelector('.score-board')
     scoreBoardDOMElement.classList.add('display')
     const scoreDOMElement = document.getElementById('score')
+    let endGame = false
     for(let i = 0; i < cellsArray.length; i++){
         const currentCell = cellsArray[i]
         currentCell.addEventListener('click', function(){
-            if(!currentCell.classList.contains('cell-clicked')){
-                if(minesArray.includes((i + 1))){
-                    clickMine(currentCell, i)
-                    gameOver(false)
-                    showMines(cellsArray, minesArray)
-                }
-                else{ 
-                    score ++
-                    scoreDOMElement.innerHTML = score
-                    clickCell(currentCell, i)
-                    console.log('Current score: ' + score)
-                    if(score == scoreToWin) gameOver(true)
+            if(!endGame){
+                if(!currentCell.classList.contains('cell-clicked')){
+                    if(minesArray.includes((i + 1))){
+                        clickMine(currentCell, i)
+                        showMines(cellsArray, minesArray)
+                        endGame = true
+                    }
+                    else{ 
+                        score ++
+                        scoreDOMElement.innerHTML = score
+                        clickCell(currentCell, i)
+                        console.log('Current score: ' + score)
+                        if(score == scoreToWin){
+                            endGame = true
+                        }
+                    }
                 }
             }
         }) 
@@ -77,10 +82,13 @@ function generateArrayRandomNumbers(min, max, dim){
     return numbersArray
 }
 
-function gameOver(result){
-    if(result) console.log('you win!')
-    else console.log('you lose!')
-}
+// function gameOver(result, scoreBoardDOMElement){
+//     if(result){
+//         scoreBoardDOMElement.innerHTML += `<h2>You WIN<h2/>`
+//     }
+//     else scoreBoardDOMElement.innerHTML += `<h2>You LOSE<h2/>`
+
+// }
 
 function showMines(cellsArray, minesArray){
     for(let i = 0; i < minesArray.length; i++){
