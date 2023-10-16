@@ -24,6 +24,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .cell-100{
@@ -40,4 +42,9 @@
 
 .cell-clicked{
     background-color: aquamarine;
+    cursor: auto;
+}
+
+.mine-clicked{
+    background-color: tomato;
 }

@@ -15,11 +15,13 @@ playDOMElement.addEventListener('click',function(){
     for(let i = 0; i < cellsArray.length; i++){
         const currentCell = cellsArray[i]
         currentCell.addEventListener('click', function(){
-            if(minesArray.includes((i + 1))){
-                console.log('Hai perso')
+            if(!currentCell.classList.contains('cell-clicked')){
+                if(minesArray.includes((i + 1))){
+                    clickMine(currentCell, i)
+                }
+                else clickCell(currentCell, i)
             }
-            else clickCell(currentCell, i)
-        })
+        })        
     }
 })
 
@@ -32,6 +34,11 @@ function chooseLevel(num){
 function clickCell(currentCell, cellPosition){
     console.log('You clicked the cell number: ' + (cellPosition + 1))
     currentCell.classList.add('cell-clicked')
+}
+
+function clickMine(currentCell, cellPosition){
+    console.log('You looooose')
+    currentCell.classList.add('mine-clicked')
 }
 
 function emptyGrid(){
