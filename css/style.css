@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section{
+    padding: 25px 0;
+}
+
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell{
+    aspect-ratio: 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cell-100{
+    flex-basis: calc(100% / 10);
+}
+
+.cell-81{
+    flex-basis: calc(100% / 9);
+}
+
+.cell-49{
+    flex-basis: calc(100% / 7);
+}
+
+.cell-clicked{
+    background-color: aquamarine;
+}
